@@ -21,9 +21,6 @@ commands
     args=parser.parse_args()
     return args
 
-def Commands(commands:list, other=False):
-    if other:
-        pass
 
 def SSHconnect(hostIP:str, username:str, password:str, execCommands:list):
     client = paramiko.client.SSHClient()
