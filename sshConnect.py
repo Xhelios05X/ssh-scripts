@@ -21,11 +21,30 @@ commands
     args=parser.parse_args()
     return args
 
+def outputToFile():
+    """
+    ToDo:
+    that function direct ssh output to file named sshlog.log
+    """
+    pass
 
 def SSHconnect(hostIP:str, username:str, password:str, execCommands:list):
     client = paramiko.client.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostIP, port=22, username=username, password=password)
+
+    # paramiko tries to connect to a server via ssh
+    try:
+        client.connect(hostIP, port=22, username=username, password=password)
+    
+        for command in execCommands:
+            _stdin, _stdout, _stderr = client.exec_command(command)
+
+    
+    # if something goes wrong, a script will end with code
+    except:
+        sys.exit(-1)
+    
+
     _stdin, _stdout, _stderr = client.exec_command("ls")
     print(_stdout.read().decode())
     client.close()
