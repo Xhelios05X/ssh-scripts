@@ -8,7 +8,8 @@ def badConnectionsCounter() -> int:
     return int(cmdOutput)
 
 def badConnectionsExamine():
+    pass
 
 # main function of program
 if __name__ == "__main__":
-    badConnections()
+    badConnectionsExamine()
