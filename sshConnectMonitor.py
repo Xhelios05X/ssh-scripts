@@ -7,12 +7,12 @@ import argparse
 # help function 
 def Help():
     parser = argparse.ArgumentParser(
-        prog = "sshConnectMonitor.py"
+        prog = "sshConnectMonitor.py",
         description="""
 Script is cheching ssh logs via 'lastb' linux command
 by never ending loop
 To kill process you have to use 'kill' command        
-"""
+        """,
     )
 
     args = parser.parser_args()
@@ -39,7 +39,7 @@ def badConnectionsExamine():
         if pattern < entryNumber:
             print("WARNING: New unsuccessful connection")
             pattern = entryNumber
-            
+
         # after a checking condition, the script sleeps for 1 minute
         time.sleep(60)
 
