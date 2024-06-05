@@ -2,8 +2,22 @@
 
 import os
 import time
+import argparse
 
-# function uses unixlike command "lastb" to check 
+def Help():
+    parser = argparse.ArgumentParser(
+        prog = "sshConnectMonitor.py"
+        description="""
+Script is cheching ssh logs via 'lastb' linux command
+by never ending loop
+To kill process you have to use 'kill' command        
+"""
+    )
+
+    args = parser.parser_args()
+    return args
+
+# function uses linux command "lastb" to check ssh logs
 def badConnectionsCounter() -> int:
     cmdOutput = os.system("sudo lastb | grep ssh")
     return int(cmdOutput)
@@ -25,4 +39,5 @@ def badConnectionsExamine():
 
 # main function of program
 if __name__ == "__main__":
+    Help()
     badConnectionsExamine()
