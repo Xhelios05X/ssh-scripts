@@ -17,7 +17,6 @@ def badConnectionsExamine():
 
         if pattern < entryNumber:
             print("WARNING: New unsuccessful connection")
-            
             pattern = entryNumber
 
         time.sleep(60)
