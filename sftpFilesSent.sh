@@ -39,4 +39,4 @@ function main(){
     rm $3.tar.gz
 }
 
-main $1 $2 $3
+main $1 $2 $3 $4
