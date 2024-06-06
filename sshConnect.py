@@ -21,12 +21,9 @@ commands
     args=parser.parse_args()
     return args
 
-def outputToFile():
-    """
-    ToDo:
-    that function direct ssh output to file named sshlog.log
-    """
-    pass
+def outputToFile(output:str):
+    with open("sshlog.txt", "w") as f:
+        f.wite(output)
 
 def SSHconnect(hostIP:str, username:str, password:str, execCommands:list):
     client = paramiko.client.SSHClient()
@@ -44,10 +41,9 @@ def SSHconnect(hostIP:str, username:str, password:str, execCommands:list):
     except:
         sys.exit(-1)
     
-
-    _stdin, _stdout, _stderr = client.exec_command("ls")
-    print(_stdout.read().decode())
+    output = _stdout.read().decode()
     client.close()
+    outputToFile(output)
 
 # main function of script
 if __name__ == "__main__":
